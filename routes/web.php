@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 //quando uma rota tem um prefixo (nao recebe parametro), deve vir primeiro
-Route::get('/user/me', [UserController::class, 'getMeProfile']);
+Route::get('/user/me', [UserController::class, 'getMeProfile'])->name('user-profile');
 
 Route::get('/user/{username}', [UserController::class, 'getProfile'])->where('username', '[A-Z]+');
+
+Route::get('/test', [UserController::class, 'test']);

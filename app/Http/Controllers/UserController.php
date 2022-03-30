@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TestRequest;
 
 class UserController extends Controller
 {
@@ -13,6 +14,23 @@ class UserController extends Controller
     }
 
     public function getProfile(string $username){
-        return view('users', compact('username'));
+        $args = ['1', 'b' => '', 1, 2, 3];
+        return view('users', compact(['username', 'args']));
+    }
+
+    /*public function test(){
+        #return response()->json(['name' => 'juliano']);
+        return redirect(route('user-profile', ['username' => 'JULIANO']));
+    }*/
+
+    public function test(/*Request $request*/ TestRequest $request){
+
+        /*
+        //caso algumas dessas validacoes nao passe, sera redirecionada para outra tela, ou dara erro
+        $this->validate($request, [
+            'name' => 'required',
+            'age' => 'required|numeric',
+        ]);*/
+        #dd($request->all());
     }
 }
