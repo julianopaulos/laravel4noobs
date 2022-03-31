@@ -15,7 +15,9 @@ class UserController extends Controller
 
     public function getProfile(string $username){
         $args = ['1', 'b' => '', 1, 2, 3];
-        return view('users', compact(['username', 'args']));
+        $whilezada = true;
+        $chatters = ['juliano', 'jeff', 'gustavo', 'laura', 'ivan'];
+        return view('users', compact(['username', 'args', 'whilezada', 'chatters']));
     }
 
     /*public function test(){
