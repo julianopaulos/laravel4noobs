@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'age' => 'integer'
     ];
+
+    public function post(){
+        //relacionamento 1 para 1 no banco
+        return $this->hasOne(Post::class);
+    }
+
+    public function posts(){
+        //relacionamento 1 para muitos no banco
+        return $this->hasMany(Post::class);
+    }
 }

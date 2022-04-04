@@ -21,4 +21,8 @@ class Post extends Model
     protected $casts = [
         'published' => 'boolean'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
