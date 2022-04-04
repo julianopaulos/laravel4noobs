@@ -16,4 +16,19 @@ class PostsController extends Controller
     public function getPost(Post $post){
         return response()->json(array('post' => $post));
     }
+
+    public function postBlogPost(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'user_id' => 'required|exists:user,id',
+        ]);
+
+        $data = $request->only(['title', 'content', 'user_id']);
+        $data['published'] = $request->has('published') ? true : false;
+
+        Post::create($data);
+
+        return redirect('posts');
+    }
 }
