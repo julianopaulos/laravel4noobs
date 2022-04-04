@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'getLandingPage']);
 Route::get('/about', [LandingController::class, 'getAboutPage']);
+Route::get('/posts/all', [PostsController::class, 'getPosts']);
+Route::get('/posts/{post}', [PostsController::class, 'getPost']);
+
 
 //quando uma rota tem um prefixo (nao recebe parametro), deve vir primeiro
 Route::get('/user/me', [UserController::class, 'getMeProfile'])->name('user-profile');
